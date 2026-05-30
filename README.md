@@ -22,8 +22,7 @@ An interactive web-based Algorithm Visualizer built using HTML, CSS, and JavaScr
 ## Future Improvements
 
 * Dark Mode
-* More Sorting Algorithms
-
+* Addding More Algorithms
 
 ## Author
 
