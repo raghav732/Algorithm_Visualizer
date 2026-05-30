@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAA Algorithm Visualizer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/visualizer.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  
+<header>
+  <div class="logo">Algosphere-<span>Algorithm Visualizer</span></div>
+</header>
+
+<div class="app">
+
+       
+    
+  <nav class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">🏠 Overview</div>
+      <div class="sidebar-item active" onclick="showPage('home')">
+        <span class="dot"></span>Home
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">📊 Sorting</div>
+      <div class="sidebar-item" onclick="showPage('bubble')">
+        <span class="dot"></span>Bubble Sort
+      </div>
+      <div class="sidebar-item" onclick="showPage('selection')">
+        <span class="dot"></span>Selection Sort
+      </div>
+      <div class="sidebar-item" onclick="showPage('merge')">
+        <span class="dot"></span>Merge Sort
+      </div>
+      <div class="sidebar-item" onclick="showPage('quick')">
+        <span class="dot"></span>Quick Sort
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">🔍 Searching</div>
+      <div class="sidebar-item" onclick="showPage('linear')">
+        <span class="dot"></span>Linear Search
+      </div>
+      <div class="sidebar-item" onclick="showPage('binary')">
+        <span class="dot"></span>Binary Search
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">🔗 Graph</div>
+      <div class="sidebar-item" onclick="showPage('bfs')">
+        <span class="dot"></span>BFS
+      </div>
+      <div class="sidebar-item" onclick="showPage('dfs')">
+        <span class="dot"></span>DFS
+      </div>
+      <div class="sidebar-item" onclick="showPage('dijkstra')">
+        <span class="dot"></span>Dijkstra
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">⚡ Dynamic Prog.</div>
+      <div class="sidebar-item" onclick="showPage('fibonacci')">
+        <span class="dot"></span>Fibonacci
+      </div>
+      <div class="sidebar-item" onclick="showPage('knapsack')">
+        <span class="dot"></span>0/1 Knapsack
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- ====================================================
+       MAIN CONTENT AREA
+       ==================================================== -->
+  <main class="main">
+
+    <!-- ==================== HOME ==================== -->
+    <div id="page-home" class="page active">
+      <div class="home-hero">
+        <h1>Design &amp; Analysis of Algorithms</h1>
+        <p>An interactive learning platform with step-by-step visualizations,
+           Python code, complexity analysis, and real-life examples —
+           built for college students.</p>
+      </div>
+      <div class="module-grid">
+        <div class="module-card" onclick="showPage('bubble')">
+          <div class="mc-icon">📊</div>
+          <div class="mc-title">Sorting Algorithms</div>
+          <div class="mc-desc">Bubble, Selection, Merge &amp; Quick Sort with animated bar charts</div>
+          <div class="mc-count">4 algorithms →</div>
+        </div>
+        <div class="module-card" onclick="showPage('linear')">
+          <div class="mc-icon">🔍</div>
+          <div class="mc-title">Searching Algorithms</div>
+          <div class="mc-desc">Linear &amp; Binary Search with highlighted array visualization</div>
+          <div class="mc-count">2 algorithms →</div>
+        </div>
+        <div class="module-card" onclick="showPage('bfs')">
+          <div class="mc-icon">🔗</div>
+          <div class="mc-title">Graph Algorithms</div>
+          <div class="mc-desc">BFS, DFS traversal &amp; Dijkstra's shortest path on live graph</div>
+          <div class="mc-count">3 algorithms →</div>
+        </div>
+        <div class="module-card" onclick="showPage('fibonacci')">
+          <div class="mc-icon">⚡</div>
+          <div class="mc-title">Dynamic Programming</div>
+          <div class="mc-desc">Fibonacci with memoization &amp; 0/1 Knapsack with DP table</div>
+          <div class="mc-count">2 algorithms →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BUBBLE SORT ==================== -->
+    <div id="page-bubble" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Bubble Sort</div>
+        <div class="algo-subtitle">Repeatedly swap adjacent elements if they are in wrong order</div>
+        <span class="tag">Sorting</span>
+        <span class="tag pink">O(n²) Time</span>
+        <span class="tag purple">O(1) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🫧</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Imagine arranging students in a line by height. You compare two adjacent
+          students and swap if the taller one is on the left. You keep doing this pass after pass
+          until no swaps are needed — like bubbles rising to the top!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> In each pass through the array, we compare every pair of
+        adjacent elements. If the left one is bigger than the right one, we swap them. After each
+        full pass, the largest unsorted element "bubbles up" to its correct position at the end.
+        We repeat this n-1 times for n elements.<br><br>
+        <strong>Best case:</strong> Already sorted array — O(n) with optimized version.<br>
+        <strong>Worst case:</strong> Reverse sorted array — O(n²) comparisons and swaps.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Best Case</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Already sorted</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(n²)</div>
+          <div class="card-desc">Reverse sorted</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(1)</div>
+          <div class="card-desc">In-place sort</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Enter array (comma separated)</label>
+            <input type="text" id="bubble-input" value="64,34,25,12,22,11,90" style="width:220px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startBubble()">▶ Visualize</button>
+          <button class="btn btn-secondary" onclick="resetBubble()">↺ Reset</button>
+        </div>
+        <div class="bar-container" id="bubble-bars"></div>
+        <div class="step-log" id="bubble-log">
+          <div class="log-line">Ready. Enter array and click Visualize.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# BUBBLE SORT - Python Implementation
+# Time: O(n^2) | Space: O(1)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">bubble_sort</span>(arr):
+    n = <span class="fn">len</span>(arr)
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n - <span class="num">1</span>):
+        swapped = <span class="kw">False</span>
+        <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(<span class="num">0</span>, n - i - <span class="num">1</span>):
+            <span class="kw">if</span> arr[j] > arr[j + <span class="num">1</span>]:
+                arr[j], arr[j+<span class="num">1</span>] = arr[j+<span class="num">1</span>], arr[j]
+                swapped = <span class="kw">True</span>
+        <span class="kw">if not</span> swapped:
+            <span class="kw">break</span>
+    <span class="kw">return</span> arr
+
+arr = [<span class="num">64</span>, <span class="num">34</span>, <span class="num">25</span>, <span class="num">12</span>, <span class="num">22</span>, <span class="num">11</span>, <span class="num">90</span>]
+<span class="fn">print</span>(<span class="str">"Sorted:"</span>, <span class="fn">bubble_sort</span>(arr))
+<span class="cm"># Output: Sorted: [11, 12, 22, 25, 34, 64, 90]</span></div>
+    </div>
+
+    <!-- ==================== SELECTION SORT ==================== -->
+    <div id="page-selection" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Selection Sort</div>
+        <div class="algo-subtitle">Find the minimum element and place it at the beginning each pass</div>
+        <span class="tag">Sorting</span>
+        <span class="tag pink">O(n²) Time</span>
+        <span class="tag purple">O(1) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🃏</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Think of sorting a hand of playing cards. You scan all cards, pick the
+          smallest one, and put it first. Then scan the remaining cards for the next smallest,
+          and so on. That's exactly selection sort!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> We divide the array into two parts — sorted (left) and
+        unsorted (right). In each pass, we find the minimum element from the unsorted part and
+        swap it with the first element of the unsorted part.<br><br>
+        <strong>Key difference from Bubble Sort:</strong> Selection Sort makes at most n-1 swaps,
+        making it good when swaps are expensive. But it's always O(n²) comparisons regardless.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Best Case</div>
+          <div class="card-value">O(n²)</div>
+          <div class="card-desc">Always same</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(n²)</div>
+          <div class="card-desc">Reverse sorted</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Swaps</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Minimum swaps</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Enter array (comma separated)</label>
+            <input type="text" id="selection-input" value="29,10,14,37,13" style="width:220px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startSelection()">▶ Visualize</button>
+          <button class="btn btn-secondary" onclick="resetSelection()">↺ Reset</button>
+        </div>
+        <div class="bar-container" id="selection-bars"></div>
+        <div class="step-log" id="selection-log"><div class="log-line">Ready.</div></div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# SELECTION SORT - Python Implementation
+# Time: O(n^2) | Space: O(1)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">selection_sort</span>(arr):
+    n = <span class="fn">len</span>(arr)
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n):
+        min_idx = i
+        <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(i + <span class="num">1</span>, n):
+            <span class="kw">if</span> arr[j] &lt; arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    <span class="kw">return</span> arr
+
+arr = [<span class="num">29</span>, <span class="num">10</span>, <span class="num">14</span>, <span class="num">37</span>, <span class="num">13</span>]
+<span class="fn">print</span>(<span class="str">"Sorted:"</span>, <span class="fn">selection_sort</span>(arr))
+<span class="cm"># Output: Sorted: [10, 13, 14, 29, 37]</span></div>
+    </div>
+
+    <!-- ==================== MERGE SORT ==================== -->
+    <div id="page-merge" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Merge Sort</div>
+        <div class="algo-subtitle">Divide array into halves, sort each, then merge them back together</div>
+        <span class="tag">Divide &amp; Conquer</span>
+        <span class="tag yellow">O(n log n) Time</span>
+        <span class="tag purple">O(n) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">📚</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Imagine two librarians, each with a sorted stack of books. To merge them
+          into one sorted stack, they compare the top book of each stack and pick the smaller one.
+          This is exactly what Merge Sort does — merge two already sorted halves!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> Merge Sort uses the "Divide and Conquer" strategy. It splits
+        the array into two halves recursively until each half has one element. Then it merges
+        adjacent halves in sorted order, working back up.<br><br>
+        <strong>Why it's better:</strong> O(n log n) guaranteed in all cases — best, average, and
+        worst! The downside is it needs extra O(n) space.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Best Case</div>
+          <div class="card-value">O(n log n)</div>
+          <div class="card-desc">Guaranteed</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(n log n)</div>
+          <div class="card-desc">Always same</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Extra array needed</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Enter array</label>
+            <input type="text" id="merge-input" value="38,27,43,3,9,82,10" style="width:220px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startMerge()">▶ Visualize</button>
+          <button class="btn btn-secondary" onclick="resetMerge()">↺ Reset</button>
+        </div>
+        <div class="bar-container" id="merge-bars"></div>
+        <div class="step-log" id="merge-log"><div class="log-line">Ready.</div></div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# MERGE SORT - Python Implementation
+# Time: O(n log n) | Space: O(n)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">merge_sort</span>(arr):
+    <span class="kw">if</span> <span class="fn">len</span>(arr) &lt;= <span class="num">1</span>: <span class="kw">return</span> arr
+    mid = <span class="fn">len</span>(arr) // <span class="num">2</span>
+    left  = <span class="fn">merge_sort</span>(arr[:mid])
+    right = <span class="fn">merge_sort</span>(arr[mid:])
+    <span class="kw">return</span> <span class="fn">merge</span>(left, right)
+
+<span class="kw">def</span> <span class="fn">merge</span>(left, right):
+    result = []; i = j = <span class="num">0</span>
+    <span class="kw">while</span> i &lt; <span class="fn">len</span>(left) <span class="kw">and</span> j &lt; <span class="fn">len</span>(right):
+        <span class="kw">if</span> left[i] &lt;= right[j]: result.<span class="fn">append</span>(left[i]); i += <span class="num">1</span>
+        <span class="kw">else</span>:                   result.<span class="fn">append</span>(right[j]); j += <span class="num">1</span>
+    <span class="kw">return</span> result + left[i:] + right[j:]
+
+<span class="fn">print</span>(<span class="fn">merge_sort</span>([<span class="num">38</span>,<span class="num">27</span>,<span class="num">43</span>,<span class="num">3</span>,<span class="num">9</span>,<span class="num">82</span>,<span class="num">10</span>]))
+<span class="cm"># Output: [3, 9, 10, 27, 38, 43, 82]</span></div>
+    </div>
+
+    <!-- ==================== QUICK SORT ==================== -->
+    <div id="page-quick" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Quick Sort</div>
+        <div class="algo-subtitle">Pick a pivot, partition array, recursively sort each partition</div>
+        <span class="tag">Divide &amp; Conquer</span>
+        <span class="tag yellow">O(n log n) Avg</span>
+        <span class="tag purple">O(log n) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🎯</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Pick a random student as a "pivot". All students shorter go left, taller
+          ones go right. Repeat the process within each group. Eventually everyone is arranged by
+          height — that's Quick Sort!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> We choose a "pivot" element. We rearrange so all elements
+        smaller than the pivot go to its left and all greater go to its right. Then we recursively
+        apply the same process on both sides.<br><br>
+        <strong>Why it's popular:</strong> Sorts in-place (O(log n) space) and has great cache
+        performance. Worst case (sorted array + bad pivot) is O(n²).
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Average Case</div>
+          <div class="card-value">O(n log n)</div>
+          <div class="card-desc">Random data</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(n²)</div>
+          <div class="card-desc">Bad pivot choice</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(log n)</div>
+          <div class="card-desc">Recursive stack</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Enter array</label>
+            <input type="text" id="quick-input" value="10,7,8,9,1,5" style="width:220px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startQuick()">▶ Visualize</button>
+          <button class="btn btn-secondary" onclick="resetQuick()">↺ Reset</button>
+        </div>
+        <div class="bar-container" id="quick-bars"></div>
+        <div class="step-log" id="quick-log"><div class="log-line">Ready.</div></div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# QUICK SORT - Python Implementation
+# Avg Time: O(n log n) | Space: O(log n)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">quick_sort</span>(arr, low, high):
+    <span class="kw">if</span> low &lt; high:
+        pi = <span class="fn">partition</span>(arr, low, high)
+        <span class="fn">quick_sort</span>(arr, low, pi - <span class="num">1</span>)
+        <span class="fn">quick_sort</span>(arr, pi + <span class="num">1</span>, high)
+
+<span class="kw">def</span> <span class="fn">partition</span>(arr, low, high):
+    pivot = arr[high]; i = low - <span class="num">1</span>
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(low, high):
+        <span class="kw">if</span> arr[j] &lt;= pivot:
+            i += <span class="num">1</span>; arr[i], arr[j] = arr[j], arr[i]
+    arr[i+<span class="num">1</span>], arr[high] = arr[high], arr[i+<span class="num">1</span>]
+    <span class="kw">return</span> i + <span class="num">1</span>
+
+arr = [<span class="num">10</span>, <span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>, <span class="num">1</span>, <span class="num">5</span>]
+<span class="fn">quick_sort</span>(arr, <span class="num">0</span>, <span class="fn">len</span>(arr)-<span class="num">1</span>)
+<span class="fn">print</span>(<span class="str">"Sorted:"</span>, arr)
+<span class="cm"># Output: Sorted: [1, 5, 7, 8, 9, 10]</span></div>
+    </div>
+
+    <!-- ==================== LINEAR SEARCH ==================== -->
+    <div id="page-linear" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Linear Search</div>
+        <div class="algo-subtitle">Check every element one by one from the start until found</div>
+        <span class="tag">Searching</span>
+        <span class="tag pink">O(n) Time</span>
+        <span class="tag purple">O(1) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">📋</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Looking for a friend's name in an unsorted attendance register — you start
+          from the top and go down line by line until you find it. No shortcuts, just checking
+          one by one!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> We start from the first element and compare each element with
+        the target. If it matches, we return the index. If we reach the end without finding it, we
+        return -1 (not found). Works on both sorted and unsorted arrays.<br><br>
+        <strong>When to use:</strong> Best for small arrays or unsorted data.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Best Case</div>
+          <div class="card-value">O(1)</div>
+          <div class="card-desc">First element</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Last or not found</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Works on</div>
+          <div class="card-value">Any</div>
+          <div class="card-desc">Sorted or unsorted</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Array</label>
+            <input type="text" id="linear-input" value="4,2,7,1,9,3,6,8" style="width:200px" />
+          </div>
+          <div>
+            <label>Search for</label>
+            <input type="number" id="linear-target" value="9" style="width:70px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startLinear()">▶ Search</button>
+          <button class="btn btn-secondary" onclick="resetLinear()">↺ Reset</button>
+        </div>
+        <div class="search-array" id="linear-cells"></div>
+        <div class="step-log" id="linear-log"><div class="log-line">Ready.</div></div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# LINEAR SEARCH - Python Implementation
+# Time: O(n) | Space: O(1)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">linear_search</span>(arr, target):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(arr)):
+        <span class="kw">if</span> arr[i] == target:
+            <span class="kw">return</span> i
+    <span class="kw">return</span> -<span class="num">1</span>
+
+arr = [<span class="num">4</span>, <span class="num">2</span>, <span class="num">7</span>, <span class="num">1</span>, <span class="num">9</span>, <span class="num">3</span>, <span class="num">6</span>, <span class="num">8</span>]
+<span class="fn">print</span>(<span class="fn">linear_search</span>(arr, <span class="num">9</span>))
+<span class="cm"># Output: 4  (index where 9 is found)</span></div>
+    </div>
+
+    <!-- ==================== BINARY SEARCH ==================== -->
+    <div id="page-binary" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Binary Search</div>
+        <div class="algo-subtitle">Repeatedly halve the search space on a sorted array</div>
+        <span class="tag">Searching</span>
+        <span class="tag yellow">O(log n) Time</span>
+        <span class="tag purple">O(1) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">📖</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Looking up a word in a dictionary — you open the middle, check if your word
+          comes before or after, then repeat on the correct half. You never re-check the eliminated
+          half. That's Binary Search — halving the problem each time!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> Array MUST be sorted. We look at the middle element.
+        If it matches — done! If target is smaller, search left half. If larger, search right
+        half. Repeat until found or range is empty.<br><br>
+        <strong>Why it's fast:</strong> For 1 million elements, it takes at most ~20 comparisons
+        (log₂ 1,000,000 ≈ 20) vs Linear Search's worst case of 1,000,000!
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Best Case</div>
+          <div class="card-value">O(1)</div>
+          <div class="card-desc">Middle element</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Worst Case</div>
+          <div class="card-value">O(log n)</div>
+          <div class="card-desc">Halving each time</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Requirement</div>
+          <div class="card-value">Sorted</div>
+          <div class="card-desc">Must be sorted!</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Sorted Array</label>
+            <input type="text" id="binary-input" value="2,5,8,12,16,23,38,56,72,91" style="width:240px" />
+          </div>
+          <div>
+            <label>Search for</label>
+            <input type="number" id="binary-target" value="23" style="width:70px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startBinary()">▶ Search</button>
+          <button class="btn btn-secondary" onclick="resetBinary()">↺ Reset</button>
+        </div>
+        <div class="search-array" id="binary-cells"></div>
+        <div class="step-log" id="binary-log">
+          <div class="log-line">Ready. (Array must be sorted)</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# BINARY SEARCH - Python Implementation
+# Time: O(log n) | Space: O(1)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">binary_search</span>(arr, target):
+    low, high = <span class="num">0</span>, <span class="fn">len</span>(arr) - <span class="num">1</span>
+    <span class="kw">while</span> low &lt;= high:
+        mid = (low + high) // <span class="num">2</span>
+        <span class="kw">if</span>   arr[mid] == target: <span class="kw">return</span> mid
+        <span class="kw">elif</span> arr[mid] &lt;  target: low  = mid + <span class="num">1</span>
+        <span class="kw">else</span>:                    high = mid - <span class="num">1</span>
+    <span class="kw">return</span> -<span class="num">1</span>
+
+arr = [<span class="num">2</span>,<span class="num">5</span>,<span class="num">8</span>,<span class="num">12</span>,<span class="num">16</span>,<span class="num">23</span>,<span class="num">38</span>,<span class="num">56</span>,<span class="num">72</span>,<span class="num">91</span>]
+<span class="fn">print</span>(<span class="fn">binary_search</span>(arr, <span class="num">23</span>))
+<span class="cm"># Output: 5</span></div>
+    </div>
+
+    <!-- ==================== BFS ==================== -->
+    <div id="page-bfs" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Breadth-First Search</div>
+        <div class="algo-subtitle">Explore graph level by level using a Queue</div>
+        <span class="tag">Graph</span>
+        <span class="tag yellow">O(V+E) Time</span>
+        <span class="tag purple">O(V) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🌊</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Think of water flooding a map — it spreads to all adjacent cells before
+          going further. Or "Friends of Friends" on social media: first your direct friends, then
+          their friends, then their friends' friends. That's BFS!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> Start from source, visit all neighbors (Level 1), then all
+        their neighbors (Level 2) — level by level. Use a <strong>Queue</strong> (FIFO) to track
+        what to visit next, and a <strong>visited</strong> set to avoid revisiting nodes.<br><br>
+        <strong>Applications:</strong> Shortest path (unweighted graph), social network analysis,
+        web crawling, connected components.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Time</div>
+          <div class="card-value">O(V+E)</div>
+          <div class="card-desc">V vertices, E edges</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(V)</div>
+          <div class="card-desc">Queue + visited</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Structure</div>
+          <div class="card-value">Queue</div>
+          <div class="card-desc">FIFO — level by level</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Start node</label>
+            <select id="bfs-start" style="width:80px">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+          <button class="btn btn-primary"   onclick="startBFS()">▶ Run BFS</button>
+          <button class="btn btn-secondary" onclick="resetGraph('bfs')">↺ Reset</button>
+        </div>
+        <svg class="graph-svg" id="bfs-graph"></svg>
+        <div class="step-log" id="bfs-log">
+          <div class="log-line">Ready. Select start node and run BFS.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# BFS - Python Implementation
+# Time: O(V+E) | Space: O(V)
+# ============================================</span>
+<span class="kw">from</span> collections <span class="kw">import</span> deque
+
+<span class="kw">def</span> <span class="fn">bfs</span>(graph, start):
+    visited = <span class="fn">set</span>(); queue = <span class="fn">deque</span>([start])
+    visited.<span class="fn">add</span>(start); order = []
+    <span class="kw">while</span> queue:
+        node = queue.<span class="fn">popleft</span>()
+        order.<span class="fn">append</span>(node)
+        <span class="kw">for</span> nb <span class="kw">in</span> graph[node]:
+            <span class="kw">if</span> nb <span class="kw">not in</span> visited:
+                visited.<span class="fn">add</span>(nb); queue.<span class="fn">append</span>(nb)
+    <span class="kw">return</span> order
+
+graph = {<span class="num">0</span>:[<span class="num">1</span>,<span class="num">2</span>],<span class="num">1</span>:[<span class="num">0</span>,<span class="num">3</span>,<span class="num">4</span>],<span class="num">2</span>:[<span class="num">0</span>,<span class="num">5</span>],<span class="num">3</span>:[<span class="num">1</span>],<span class="num">4</span>:[<span class="num">1</span>],<span class="num">5</span>:[<span class="num">2</span>]}
+<span class="fn">print</span>(<span class="fn">bfs</span>(graph, <span class="num">0</span>))
+<span class="cm"># Output: [0, 1, 2, 3, 4, 5]</span></div>
+    </div>
+
+    <!-- ==================== DFS ==================== -->
+    <div id="page-dfs" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Depth-First Search</div>
+        <div class="algo-subtitle">Explore as deep as possible along each branch before backtracking</div>
+        <span class="tag">Graph</span>
+        <span class="tag yellow">O(V+E) Time</span>
+        <span class="tag purple">O(V) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🌳</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Like exploring a maze — you keep going deeper down one path until a dead end,
+          then backtrack and try another path. Or reading a book's table of contents: Chapter 1 →
+          Section 1.1 → Subsection 1.1.1... all the way down before moving to 1.2.</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> Start from source, go as deep as possible along one path
+        (using recursion or a <strong>Stack</strong>), backtrack when stuck, then explore the next
+        unvisited neighbor.<br><br>
+        <strong>vs BFS:</strong> BFS = Queue (level-by-level). DFS = Stack (depth-first).
+        DFS is good for cycle detection, topological sorting, maze solving.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Time</div>
+          <div class="card-value">O(V+E)</div>
+          <div class="card-desc">V vertices, E edges</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(V)</div>
+          <div class="card-desc">Recursion stack</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Structure</div>
+          <div class="card-value">Stack</div>
+          <div class="card-desc">LIFO — goes deep</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Start node</label>
+            <select id="dfs-start" style="width:80px">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+          <button class="btn btn-primary"   onclick="startDFS()">▶ Run DFS</button>
+          <button class="btn btn-secondary" onclick="resetGraph('dfs')">↺ Reset</button>
+        </div>
+        <svg class="graph-svg" id="dfs-graph"></svg>
+        <div class="step-log" id="dfs-log">
+          <div class="log-line">Ready. Select start node and run DFS.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# DFS - Python Implementation (Recursive)
+# Time: O(V+E) | Space: O(V)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">dfs</span>(graph, node, visited=<span class="kw">None</span>, order=<span class="kw">None</span>):
+    <span class="kw">if</span> visited <span class="kw">is None</span>: visited=<span class="fn">set</span>(); order=[]
+    visited.<span class="fn">add</span>(node); order.<span class="fn">append</span>(node)
+    <span class="kw">for</span> nb <span class="kw">in</span> graph[node]:
+        <span class="kw">if</span> nb <span class="kw">not in</span> visited:
+            <span class="fn">dfs</span>(graph, nb, visited, order)
+    <span class="kw">return</span> order
+
+graph = {<span class="num">0</span>:[<span class="num">1</span>,<span class="num">2</span>],<span class="num">1</span>:[<span class="num">0</span>,<span class="num">3</span>,<span class="num">4</span>],<span class="num">2</span>:[<span class="num">0</span>,<span class="num">5</span>],<span class="num">3</span>:[<span class="num">1</span>],<span class="num">4</span>:[<span class="num">1</span>],<span class="num">5</span>:[<span class="num">2</span>]}
+<span class="fn">print</span>(<span class="fn">dfs</span>(graph, <span class="num">0</span>))
+<span class="cm"># Output: [0, 1, 3, 4, 2, 5]</span></div>
+    </div>
+
+    <!-- ==================== DIJKSTRA ==================== -->
+    <div id="page-dijkstra" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Dijkstra's Algorithm</div>
+        <div class="algo-subtitle">Find shortest path from source to all nodes in a weighted graph</div>
+        <span class="tag">Graph</span>
+        <span class="tag yellow">O((V+E) log V)</span>
+        <span class="tag purple">O(V) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🗺️</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Google Maps finding the shortest route! Each road has a distance (weight).
+          Dijkstra's algorithm always expands the nearest unvisited city first — until it finds the
+          shortest path to every destination.</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> Distance table — source = 0, all others = infinity. Greedily
+        pick the unvisited node with smallest distance, then relax (update) distances to its
+        neighbors. Repeat until all nodes are visited.<br><br>
+        <strong>Key requirement:</strong> All edge weights must be non-negative.<br>
+        <strong>Data structure:</strong> Min-Heap makes it O((V+E) log V).
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Time</div>
+          <div class="card-value">O((V+E)logV)</div>
+          <div class="card-desc">With min-heap</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(V)</div>
+          <div class="card-desc">Distance + visited</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Requires</div>
+          <div class="card-value">≥ 0</div>
+          <div class="card-desc">Non-negative weights</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <button class="btn btn-primary"   onclick="startDijkstra()">▶ Run Dijkstra (from node 0)</button>
+          <button class="btn btn-secondary" onclick="resetGraph('dijkstra')">↺ Reset</button>
+        </div>
+        <svg class="graph-svg" id="dijkstra-graph"></svg>
+        <div class="step-log" id="dijkstra-log">
+          <div class="log-line">Ready. Running from node 0.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# DIJKSTRA - Python Implementation
+# Time: O((V+E) log V) | Space: O(V)
+# ============================================</span>
+<span class="kw">import</span> heapq
+
+<span class="kw">def</span> <span class="fn">dijkstra</span>(graph, src):
+    dist = {n: <span class="fn">float</span>(<span class="str">'inf'</span>) <span class="kw">for</span> n <span class="kw">in</span> graph}
+    dist[src] = <span class="num">0</span>; heap = [(<span class="num">0</span>, src)]
+    <span class="kw">while</span> heap:
+        d, u = heapq.<span class="fn">heappop</span>(heap)
+        <span class="kw">if</span> d > dist[u]: <span class="kw">continue</span>
+        <span class="kw">for</span> v, w <span class="kw">in</span> graph[u]:
+            <span class="kw">if</span> dist[u]+w &lt; dist[v]:
+                dist[v]=dist[u]+w
+                heapq.<span class="fn">heappush</span>(heap,(dist[v],v))
+    <span class="kw">return</span> dist</div>
+    </div>
+
+    <!-- ==================== FIBONACCI ==================== -->
+    <div id="page-fibonacci" class="page">
+      <div class="algo-header">
+        <div class="algo-title">Fibonacci — DP</div>
+        <div class="algo-subtitle">Store computed values to avoid redundant recursive calls</div>
+        <span class="tag">Dynamic Programming</span>
+        <span class="tag yellow">O(n) Time</span>
+        <span class="tag purple">O(n) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🐰</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">Fibonacci appears in nature — a rabbit population grows in the Fibonacci
+          pattern. 1 → 1 → 2 → 3 → 5 → 8 pairs each month. Computing F(30) naively is slow, but
+          with DP (memoization) it's instant!</div>
+      </div>
+      <div class="explain-box">
+        <strong>Naive Recursion problem:</strong> F(5) calls F(4) and F(3). F(4) calls F(3) and
+        F(2). F(3) is computed multiple times! → O(2ⁿ) exponential.<br><br>
+        <strong>DP fix:</strong> Store results of subproblems. When F(3) is needed again, look it
+        up — no recomputing. Reduces time from O(2ⁿ) to O(n)!<br><br>
+        <strong>Two approaches:</strong> (1) Top-down with memoization, (2) Bottom-up tabulation.
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Naive</div>
+          <div class="card-value">O(2ⁿ)</div>
+          <div class="card-desc">Exponential — slow</div>
+        </div>
+        <div class="card">
+          <div class="card-title">With DP</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Linear — fast</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space</div>
+          <div class="card-value">O(n)</div>
+          <div class="card-desc">Memo/table array</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Compute F(n) for n =</label>
+            <input type="number" id="fib-n" value="10" min="1" max="20" style="width:70px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startFib()">▶ Compute</button>
+          <button class="btn btn-secondary" onclick="resetFib()">↺ Reset</button>
+        </div>
+        <div class="fib-steps" id="fib-cells"></div>
+        <div class="step-log" id="fib-log">
+          <div class="log-line">Ready. Enter n and compute.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# FIBONACCI - Dynamic Programming
+# Time: O(n) | Space: O(n)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">fibonacci_dp</span>(n):
+    <span class="kw">if</span> n &lt;= <span class="num">1</span>: <span class="kw">return</span> n
+    dp = [<span class="num">0</span>] * (n + <span class="num">1</span>); dp[<span class="num">1</span>] = <span class="num">1</span>
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">2</span>, n+<span class="num">1</span>):
+        dp[i] = dp[i-<span class="num">1</span>] + dp[i-<span class="num">2</span>]
+    <span class="kw">return</span> dp[n]
+
+<span class="fn">print</span>(<span class="fn">fibonacci_dp</span>(<span class="num">10</span>))  <span class="cm"># Output: 55</span>
+<span class="cm"># Sequence: [0,1,1,2,3,5,8,13,21,34,55]</span></div>
+    </div>
+
+    <!-- ==================== KNAPSACK ==================== -->
+    <div id="page-knapsack" class="page">
+      <div class="algo-header">
+        <div class="algo-title">0/1 Knapsack</div>
+        <div class="algo-subtitle">Maximize value with weight constraint — include or exclude each item</div>
+        <span class="tag">Dynamic Programming</span>
+        <span class="tag yellow">O(n·W) Time</span>
+        <span class="tag purple">O(n·W) Space</span>
+      </div>
+      <div class="real-example">
+        <div class="icon">🎒</div>
+        <div class="title">Real-Life Example</div>
+        <div class="desc">You're a thief with a backpack holding 10kg. Items: Laptop (3kg, ₹30k),
+          Phone (1kg, ₹10k), Gold bar (4kg, ₹20k), Watch (2kg, ₹15k). Which combination gives
+          maximum profit without exceeding 10kg? Knapsack finds the optimal answer!</div>
+      </div>
+      <div class="explain-box">
+        <strong>How it works:</strong> For each item — <strong>include it</strong> (if weight
+        allows) or <strong>exclude it</strong>. Build a 2D DP table where
+        dp[i][w] = max value using first i items with capacity w.<br><br>
+        <strong>Recurrence:</strong><br>
+        — If weight[i] &gt; w: dp[i][w] = dp[i-1][w]<br>
+        — Else: dp[i][w] = max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i])
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Time Complexity</div>
+          <div class="card-value">O(n·W)</div>
+          <div class="card-desc">n items, W capacity</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Space Complexity</div>
+          <div class="card-value">O(n·W)</div>
+          <div class="card-desc">2D DP table</div>
+        </div>
+      </div>
+      <div class="viz-panel">
+        <div class="viz-controls">
+          <div>
+            <label>Capacity (W)</label>
+            <input type="number" id="ks-cap" value="7" min="1" max="15" style="width:70px" />
+          </div>
+          <button class="btn btn-primary"   onclick="startKnapsack()">▶ Solve</button>
+          <button class="btn btn-secondary" onclick="resetKnapsack()">↺ Reset</button>
+        </div>
+        <div id="ks-items" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;"></div>
+        <div style="overflow-x:auto">
+          <table class="dp-table" id="ks-table"></table>
+        </div>
+        <div class="step-log" id="ks-log">
+          <div class="log-line">Ready. Click Solve to run.</div>
+        </div>
+      </div>
+      <div class="code-block"><span class="cm"># ============================================
+# 0/1 KNAPSACK - Dynamic Programming
+# Time: O(n*W) | Space: O(n*W)
+# ============================================</span>
+
+<span class="kw">def</span> <span class="fn">knapsack</span>(weights, values, W):
+    n  = <span class="fn">len</span>(weights)
+    dp = [[<span class="num">0</span>]*(W+<span class="num">1</span>) <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(n+<span class="num">1</span>)]
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, n+<span class="num">1</span>):
+        <span class="kw">for</span> w <span class="kw">in</span> <span class="fn">range</span>(W+<span class="num">1</span>):
+            dp[i][w] = dp[i-<span class="num">1</span>][w]
+            <span class="kw">if</span> weights[i-<span class="num">1</span>] &lt;= w:
+                inc = dp[i-<span class="num">1</span>][w-weights[i-<span class="num">1</span>]] + values[i-<span class="num">1</span>]
+                dp[i][w] = <span class="fn">max</span>(dp[i][w], inc)
+    <span class="kw">return</span> dp[n][W]
+
+<span class="fn">print</span>(<span class="fn">knapsack</span>([<span class="num">1</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>],[<span class="num">1</span>,<span class="num">4</span>,<span class="num">5</span>,<span class="num">7</span>],<span class="num">7</span>))
+<span class="cm"># Output: 9</span></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ======================================================
+     JAVASCRIPT — load order is important!
+     utils.js must come first (shared helpers)
+     init.js must come last (uses functions from all other files)
+     ====================================================== -->
+<script src="js/utils.js"></script>
+<script src="js/sorting.js"></script>
+<script src="js/searching.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/dp.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

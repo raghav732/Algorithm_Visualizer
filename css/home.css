@@ -1,0 +1,64 @@
+/* ============================================
+   FILE: css/home.css
+   Home/landing page styles:
+   Hero section and module cards grid
+   ============================================ */
+
+/* --- HERO --- */
+.home-hero {
+  text-align:  center;
+  padding:     48px 24px 32px;
+  max-width:   700px;
+  margin:      0 auto;
+}
+
+.home-hero h1 {
+  font-size:      3rem;
+  font-weight:    800;
+  letter-spacing: -2px;
+  line-height:    1.1;
+  margin-bottom:  16px;
+  background:     linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-hero p {
+  color:         var(--muted);
+  font-size:     1rem;
+  line-height:   1.7;
+  margin-bottom: 28px;
+}
+
+/* --- MODULE CARDS GRID --- */
+.module-grid {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   14px;
+  max-width:             680px;
+  margin:                0 auto;
+}
+
+.module-card {
+  background:    var(--card);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       20px;
+  cursor:        pointer;
+  transition:    all 0.2s;
+  text-align:    left;
+}
+.module-card:hover {
+  border-color: var(--accent);
+  transform:    translateY(-2px);
+  background:   rgba(110,231,183,0.04);
+}
+
+.module-card .mc-icon  { font-size: 1.8rem; margin-bottom: 10px; }
+.module-card .mc-title { font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+.module-card .mc-desc  { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.module-card .mc-count { font-size: 0.7rem; color: var(--accent); font-weight: 700; margin-top: 10px; }
+
+@media (max-width: 768px) {
+  .module-grid { grid-template-columns: 1fr; }
+}

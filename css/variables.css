@@ -1,0 +1,31 @@
+/* ============================================
+   FILE: css/variables.css
+   CSS Custom Properties (Design Tokens)
+   Import this first in every CSS file
+   ============================================ */
+
+:root {
+  /* Colors */
+  --bg:           #0d0f14;
+  --surface:      #13161e;
+  --card:         #1a1e2a;
+  --border:       #252a38;
+  --accent:       #6ee7b7;
+  --accent2:      #818cf8;
+  --accent3:      #f472b6;
+  --accent4:      #fbbf24;
+  --text:         #e2e8f0;
+  --muted:        #64748b;
+  --code:         #0f172a;
+
+  /* Bar chart colors */
+  --bar-default:  #2a3044;
+  --bar-active:   #6ee7b7;
+  --bar-compare:  #f472b6;
+  --bar-done:     #818cf8;
+
+  /* Misc */
+  --radius:       12px;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+}
